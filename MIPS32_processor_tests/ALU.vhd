@@ -39,3 +39,11 @@ begin
 
     end process;
 end Behavioral;
+-- ALU funciona como um circuito logico que realiza operações aritmeticas com as variaveis A e B(32 bits )
+
+-- O ALUcontrol diz a ALU o que fazer com A e B, isso ocorre de acordo como
+-- os bits que o multiplexador recebe (0000) para soma (0001) para subtração.
+
+-- A saida temp_result surge como um problema para ler a porta Result,
+-- pois ela é uma variavel temporaria que não é acessivel fora do processo, é usado
+-- para calcular operações de and e or.
