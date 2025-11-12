@@ -18,54 +18,27 @@ begin
     process(opcode)
     begin
         -- Default values
-        RegWrite <= '0';
-        MemRead  <= '0';
-        MemWrite <= '0';
-        MemtoReg <= '0';
-        ALUSrc   <= '0';
-        RegDst   <= '0';
-        Branch   <= '0';
-        ALUOp    <= "00";
+        RegWrite <= '0'; MemRead  <= '0'; MemWrite <= '0';
+        MemtoReg <= '0'; ALUSrc   <= '0'; RegDst   <= '0';
+        Branch   <= '0'; ALUOp    <= "00";
 
         case opcode is
-            when "000000" => -- R-type instructions (add, sub, and, or)
-                RegDst   <= '1';
-                ALUSrc   <= '0';
-                MemtoReg <= '0';
-                RegWrite <= '1';
-                MemRead  <= '0';
-                MemWrite <= '0';
-                Branch   <= '0';
-                ALUOp    <= "10";
-
-            when "100011" => -- lw (load word)
-                RegDst   <= '0';
-                ALUSrc   <= '1';
-                MemtoReg <= '1';
-                RegWrite <= '1';
-                MemRead  <= '1';
-                MemWrite <= '0';
-                Branch   <= '0';
-                ALUOp    <= "00"; -- ALU adds for address calculation
-
-            when "101011" => -- sw (store word)
-                ALUSrc   <= '1';
-                RegWrite <= '0';
-                MemRead  <= '0';
-                MemWrite <= '1';
-                Branch   <= '0';
-                ALUOp    <= "00"; -- ALU adds for address calculation
-
-            when "000100" => -- beq (branch if equal)
-                ALUSrc   <= '0';
-                RegWrite <= '0';
-                MemRead  <= '0';
-                MemWrite <= '0';
-                Branch   <= '1';
-                ALUOp    <= "01"; -- ALU subtracts to check for equality
-
-            when others =>
-                -- Keep default values for unsupported instructions
+            when "000000" => -- R-type
+                RegDst <= '1'; ALUOp <= "10"; RegWrite <= '1';
+            when "100011" => -- lw
+                ALUSrc <= '1'; MemtoReg <= '1'; RegWrite <= '1'; MemRead <= '1';
+            when "101011" => -- sw
+                ALUSrc <= '1'; MemWrite <= '1';
+            when "000100" => -- beq
+                Branch <= '1'; ALUOp <= "01";
+            when "001000" => -- addi
+                ALUSrc <= '1'; RegWrite <= '1'; ALUOp <= "00";
+            when others => null; -- Keep defaults for unsupported opcodes
         end case;
     end process;
 end Behavioral;
+
+-- Unidade que passa ordens aos outros componentes do processador
+-- A unica entrada recebe apenas uma impormação "opcode" 6 bits
+-- usando um case para decidir que instrução é essa, e as 9 saidas
+-- são sinais de controle que comandam o restante do processo.
