@@ -29,3 +29,17 @@ begin
         end case;
     end process;
 end Behavioral;
+
+-- Ponte entre a unidade de controle principal do processador e a ALU.
+-- FUnciona verificando os sinais da instrução em MIPS e decidindo qual comando
+-- de 4 bits (ALUControl) deve enviar para a ALU.
+
+-- ALUOP: sinalsimplificado vindo do controle principal, diz a categoria da operação
+
+-- funct(6 bits): E um pedaço da propria instrução MIPS(os 6 bits finais), usado apenas
+-- para instruções do tipo-R
+
+-- instruções ALUOp :
+    -- lw/sw: 00,  somam um endereço base e um deslocamentoi.
+    -- beq: 01, compara dois registradores
+    -- Tipo-r: 10,  ass, sub, and, or
