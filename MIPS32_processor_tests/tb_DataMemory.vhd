@@ -1,10 +1,12 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use std.env.all; -- <--- 1. ADICIONE ESTA LINHA
 
 entity tb_DataMemory is
 end tb_DataMemory;
 
 architecture testbench of tb_DataMemory is
+    -- (Seu 'component' e 'signal' continuam aqui, sem mudanças)
     component DataMemory is
         Port ( clk : in STD_LOGIC;
                mem_read : in STD_LOGIC;
@@ -42,6 +44,6 @@ begin
         assert(read_data = x"DEADBEEF") report "Memory read failed" severity error;
 
         report "DataMemory test finished successfully.";
-        wait;
+        std.env.finish; -- <--- 2. SUBSTITUA 'wait;' POR ISTO
     end process;
 end testbench;
