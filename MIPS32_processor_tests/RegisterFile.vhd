@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity RegisterFile is
     Port ( clk : in STD_LOGIC;
@@ -25,4 +26,10 @@ begin
     end process;
     read_data1 <= registers(to_integer(unsigned(read_reg1)));
     read_data2 <= registers(to_integer(unsigned(read_reg2)));
-end Behavioral
+end Behavioral;
+
+
+--  Memoria de trabalho principal do processador
+--  Banco de registradores de 3 portas, permite 3 acessos independentes ao mesmo tempo;
+-- (Ex: add $t2, $t0, $t1 (Some $t0 e $t1 e salve em $t2)
+--  a ALU só pode operar em dados que estão dentro deste Banco de Registradores.
