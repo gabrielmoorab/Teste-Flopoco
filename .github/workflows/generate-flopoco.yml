@@ -1,7 +1,7 @@
-name: Generate FloPoCo VHDL
+name: Generate FloPoCo VHDL (debug)
 
 on:
-  workflow_dispatch:  # permite rodar manualmente
+  workflow_dispatch:
 
 jobs:
   build-and-generate:
@@ -10,35 +10,58 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: System info
+        run: |
+          uname -a
+          gcc --version || true
+          cmake --version || true
+
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev
 
-      - name: Clone and build FloPoCo
+      - name: Clone FloPoCo
         run: |
-          git clone https://gitlab.inria.fr/flopoco/flopoco.git
+          set -xe
+          git clone --depth 1 https://gitlab.inria.fr/flopoco/flopoco.git
+          ls -la
+
+      - name: Build FloPoCo
+        run: |
+          set -xe
           cd flopoco
-          mkdir build && cd build
-          cmake -DCMAKE_BUILD_TYPE=Release ..
-          make -j
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release .. | tee ../../cmake.log
+          make -j2 | tee ../../make.log
 
       - name: Generate VHDL operators (FP32)
         run: |
+          set -xe
           mkdir -p out
-          pushd flopoco/build
-          # Lista operadores (ajude-se a conferir nomes disponíveis)
-          ./flopoco -list | head -n 120 || true
-          # Gere FPAdd/FPSub/FPMul para IEEE-754 single (wE=8, wF=23)
-          ./flopoco FPAdd wE=8 wF=23 || true
-          ./flopoco FPSub wE=8 wF=23 || true
-          ./flopoco FPMul wE=8 wF=23 || true
-          # Copie os .vhd gerados para a pasta de saída do workflow
-          cp *.vhd ../../out/ || true
-          popd
+          cd flopoco/build
+          ./flopoco -h | head -n 50 | tee ../../flopoco-help.log || true
+          ./flopoco -list | tee ../../operators.list || true
+          # Tenta nomes comuns (variam por versão)
+          ./flopoco FPAdd wE=8 wF=23 | tee ../../FPAdd.log || true
+          ./flopoco FPSub wE=8 wF=23 | tee ../../FPSub.log || true
+          ./flopoco FPMul wE=8 wF=23 | tee ../../FPMul.log || true
+          ./flopoco FPMult wE=8 wF=23 | tee ../../FPMult.log || true
+          cd ../../
+          find flopoco/build -maxdepth 1 -name '*.vhd' -print -exec cp {} out/ \; || true
 
-      - name: Upload VHDL as artifact
+      - name: Upload artifacts (VHDL + logs)
         uses: actions/upload-artifact@v4
         with:
-          name: flopoco-vhdl-fp32
-          path: out/*.vhd 
+          name: flopoco-build-and-vhdl
+          path: |
+            out/*.vhd
+            cmake.log
+            make.log
+            operators.list
+            FPAdd.log
+            FPSub.log
+            FPMul.log
+            FPMult.log
+            flopoco-help.log
