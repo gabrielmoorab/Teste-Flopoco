@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (plamrdds)
+name: Generate FloPoCo VHDL (finalmente)
 
 on:
   workflow_dispatch:
@@ -77,19 +77,31 @@ jobs:
 
           # Try multiple operator names across versions
           ./flopoco FPAdd wE=8 wF=23 2>&1 | tee ../../FPAdd.log || true
+          # Capture output file if generated
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPAdd_8_23.vhdl; fi
+
           ./flopoco FPSub wE=8 wF=23 2>&1 | tee ../../FPSub.log || true
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPSub_8_23.vhdl; fi
+
           ./flopoco FPMul wE=8 wF=23 2>&1 | tee ../../FPMul.log || true
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMul_8_23.vhdl; fi
+
           ./flopoco FPMult wE=8 wF=23 2>&1 | tee ../../FPMult.log || true
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMult_8_23.vhdl; fi
+
           ./flopoco FPAdder wE=8 wF=23 2>&1 | tee ../../FPAdder.log || true
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPAdder_8_23.vhdl; fi
+
           ./flopoco FPMultiplier wE=8 wF=23 2>&1 | tee ../../FPMultiplier.log || true
+          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMultiplier_8_23.vhdl; fi
 
           echo "Arquivos gerados no diretório atual:"
           ls -la || true
 
           cd ../../
           mkdir -p out
-          # Copy both .vhdl and .vhd, if any
-          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp {} out/ \; || true
+          # Also copy any remaining .vhdl/.vhd as a fallback
+          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp -n {} out/ \; || true
 
           echo "Conteúdo da pasta out/"
           ls -la out || true
