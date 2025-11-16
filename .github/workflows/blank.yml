@@ -1,0 +1,63 @@
+name: Generate FloPoCo VHDL (fp32)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev
+
+      - name: Clone FloPoCo
+        run: |
+          set -xe
+          git clone --depth 1 https://gitlab.inria.fr/flopoco/flopoco.git
+
+      - name: Build FloPoCo
+        run: |
+          set -xe
+          cd flopoco
+          mkdir -p build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make -j2
+          ./flopoco -list | tee ../../operators.list
+
+      - name: Generate VHDL operators (FP32)
+        run: |
+          set -xe
+          mkdir -p out
+          cd flopoco/build
+          # Tente vários nomes de operadores (variam por versão do FloPoCo)
+          ./flopoco FPAdd wE=8 wF=23 || true
+          ./flopoco FPSub wE=8 wF=23 || true
+          ./flopoco FPMul wE=8 wF=23 || true
+          ./flopoco FPMult wE=8 wF=23 || true
+          ./flopoco FPAdder wE=8 wF=23 || true
+          ./flopoco FPMultiplier wE=8 wF=23 || true
+
+          echo "Arquivos gerados no diretório atual:"
+          ls -la
+
+          cd ../../
+          mkdir -p out
+          # Copia .vhdl e .vhd
+          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp {} out/ \;
+
+          echo "Conteúdo da pasta out/"
+          ls -la out || true
+
+      - name: Upload artifacts (VHDL + list)
+        uses: actions/upload-artifact@v4
+        with:
+          name: flopoco-vhdl-fp32
+          path: |
+            out/*.vhdl
+            out/*.vhd
+            operators.list
