@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (fp32---stable)
+name: Generate FloPoCo VHDL (fp32stableee)
 
 on:
   workflow_dispatch:
@@ -19,7 +19,9 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev libboost-dev pkg-config
+          # Core toolchain + FloPoCo deps: GMP, MPFR, MPFI, Boost, pkg-config
+          sudo apt-get install -y git cmake g++ make \
+            libgmp-dev libmpfr-dev libmpfi-dev libboost-dev pkg-config
 
       - name: Clone FloPoCo (with fallback)
         run: |
