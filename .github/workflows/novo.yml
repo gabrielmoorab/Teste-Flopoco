@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-and-generate:
-    runs-on: ubuntu-22.04  # pin do runner para estabilidade
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,19 +19,15 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev \
-                                  libboost-dev pkg-config
+          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev libboost-dev pkg-config
 
-      - name: Clone FloPoCo (pin to latest release tag)
+      - name: Clone FloPoCo (with fallback)
         run: |
           set -euxo pipefail
-          git clone https://gitlab.inria.fr/flopoco/flopoco.git
-          cd flopoco
-          git fetch --tags --force
-          # pega a tag mais recente que começa com 'v'
-          latestTag=$(git -c versionsort.suffix=- tag -l "v*" --sort=-v:refname | head -n 1)
-          echo "Using tag: $latestTag"
-          git checkout "$latestTag"
+          # Try official GitLab first; fall back to a GitHub mirror if needed
+          (git clone --depth 1 https://gitlab.inria.fr/flopoco/flopoco.git flopoco \
+            || git clone --depth 1 https://github.com/flopoco/flopoco.git flopoco)
+          test -d flopoco
 
       - name: Build FloPoCo
         run: |
@@ -49,7 +45,7 @@ jobs:
           mkdir -p out
           cd flopoco/build
 
-          # Tente múltiplos nomes (variantes entre versões)
+          # Try multiple operator names across versions
           ./flopoco FPAdd wE=8 wF=23 2>&1 | tee ../../FPAdd.log || true
           ./flopoco FPSub wE=8 wF=23 2>&1 | tee ../../FPSub.log || true
           ./flopoco FPMul wE=8 wF=23 2>&1 | tee ../../FPMul.log || true
@@ -58,11 +54,11 @@ jobs:
           ./flopoco FPMultiplier wE=8 wF=23 2>&1 | tee ../../FPMultiplier.log || true
 
           echo "Arquivos gerados no diretório atual:"
-          ls -la
+          ls -la || true
 
           cd ../../
           mkdir -p out
-          # Copia .vhdl e .vhd
+          # Copy both .vhdl and .vhd, if any
           find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp {} out/ \; || true
 
           echo "Conteúdo da pasta out/"
