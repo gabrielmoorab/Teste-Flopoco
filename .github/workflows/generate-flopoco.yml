@@ -1,0 +1,44 @@
+name: Generate FloPoCo VHDL
+
+on:
+  workflow_dispatch:  # permite rodar manualmente
+
+jobs:
+  build-and-generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev
+
+      - name: Clone and build FloPoCo
+        run: |
+          git clone https://gitlab.inria.fr/flopoco/flopoco.git
+          cd flopoco
+          mkdir build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          make -j
+
+      - name: Generate VHDL operators (FP32)
+        run: |
+          mkdir -p out
+          pushd flopoco/build
+          # Lista operadores (ajude-se a conferir nomes disponíveis)
+          ./flopoco -list | head -n 120 || true
+          # Gere FPAdd/FPSub/FPMul para IEEE-754 single (wE=8, wF=23)
+          ./flopoco FPAdd wE=8 wF=23 || true
+          ./flopoco FPSub wE=8 wF=23 || true
+          ./flopoco FPMul wE=8 wF=23 || true
+          # Copie os .vhd gerados para a pasta de saída do workflow
+          cp *.vhd ../../out/ || true
+          popd
+
+      - name: Upload VHDL as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flopoco-vhdl-fp32
+          path: out/*.vhd 
