@@ -1,0 +1,93 @@
+name: Generate FloPoCo VHDL (fp32--
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-generate:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: System info
+        run: |
+          uname -a
+          gcc --version || true
+          cmake --version || true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git cmake g++ make libgmp-dev libmpfr-dev libboost-dev pkg-config
+
+      - name: Clone FloPoCo (with fallback)
+        run: |
+          set -euxo pipefail
+          # Try official GitLab first; fall back to a GitHub mirror if needed
+          (git clone --depth 1 https://gitlab.inria.fr/flopoco/flopoco.git flopoco \
+            || git clone --depth 1 https://github.com/flopoco/flopoco.git flopoco)
+          test -d flopoco
+
+      - name: Build FloPoCo
+        run: |
+          set -euxo pipefail
+          cd flopoco
+          mkdir -p build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release .. 2>&1 | tee ../../cmake.log
+          make -j2 2>&1 | tee ../../make.log
+          ./flopoco -list 2>&1 | tee ../../operators.list
+
+      - name: Print build logs tail (always)
+        if: always()
+        run: |
+          echo '----- tail cmake.log -----'
+          tail -n 200 cmake.log || true
+          echo '----- tail make.log -----'
+          tail -n 200 make.log || true
+          echo '----- operators.list (first 60) -----'
+          head -n 60 operators.list || true
+
+      - name: Generate VHDL operators (FP32)
+        run: |
+          set -euxo pipefail
+          mkdir -p out
+          cd flopoco/build
+
+          # Try multiple operator names across versions
+          ./flopoco FPAdd wE=8 wF=23 2>&1 | tee ../../FPAdd.log || true
+          ./flopoco FPSub wE=8 wF=23 2>&1 | tee ../../FPSub.log || true
+          ./flopoco FPMul wE=8 wF=23 2>&1 | tee ../../FPMul.log || true
+          ./flopoco FPMult wE=8 wF=23 2>&1 | tee ../../FPMult.log || true
+          ./flopoco FPAdder wE=8 wF=23 2>&1 | tee ../../FPAdder.log || true
+          ./flopoco FPMultiplier wE=8 wF=23 2>&1 | tee ../../FPMultiplier.log || true
+
+          echo "Arquivos gerados no diretório atual:"
+          ls -la || true
+
+          cd ../../
+          mkdir -p out
+          # Copy both .vhdl and .vhd, if any
+          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp {} out/ \; || true
+
+          echo "Conteúdo da pasta out/"
+          ls -la out || true
+
+      - name: Upload artifacts (VHDL + logs) - always
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flopoco-build-and-vhdl
+          path: |
+            out/*.vhdl
+            out/*.vhd
+            cmake.log
+            make.log
+            operators.list
+            FPAdd.log
+            FPSub.log
+            FPMul.log
+            FPMult.log
+            FPAdder.log
+            FPMultiplier.log
