@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (finalmente)
+name: Generate FloPoCo VHDL (naguentomais)
 
 on:
   workflow_dispatch:
@@ -72,36 +72,37 @@ jobs:
       - name: Generate VHDL operators (FP32)
         run: |
           set -euxo pipefail
-          mkdir -p out
+          OUTDIR="$GITHUB_WORKSPACE/out"
+          mkdir -p "$OUTDIR"
           cd flopoco/build
 
           # Try multiple operator names across versions
           ./flopoco FPAdd wE=8 wF=23 2>&1 | tee ../../FPAdd.log || true
           # Capture output file if generated
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPAdd_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPAdd_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           ./flopoco FPSub wE=8 wF=23 2>&1 | tee ../../FPSub.log || true
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPSub_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPSub_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           ./flopoco FPMul wE=8 wF=23 2>&1 | tee ../../FPMul.log || true
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMul_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPMul_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           ./flopoco FPMult wE=8 wF=23 2>&1 | tee ../../FPMult.log || true
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMult_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPMult_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           ./flopoco FPAdder wE=8 wF=23 2>&1 | tee ../../FPAdder.log || true
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPAdder_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPAdder_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           ./flopoco FPMultiplier wE=8 wF=23 2>&1 | tee ../../FPMultiplier.log || true
-          if [ -f flopoco.vhdl ]; then cp flopoco.vhdl ../../out/FPMultiplier_8_23.vhdl; fi
+          if [ -f flopoco.vhdl ]; then cp -f flopoco.vhdl "$OUTDIR/FPMultiplier_8_23.vhdl"; rm -f flopoco.vhdl; fi
 
           echo "Arquivos gerados no diretório atual:"
           ls -la || true
 
           cd ../../
-          mkdir -p out
           # Also copy any remaining .vhdl/.vhd as a fallback
-          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp -n {} out/ \; || true
+          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp -n {} "$OUTDIR"/ \; || true
+          echo "Conteúdo de $OUTDIR:" && ls -la "$OUTDIR" || true
 
           echo "Conteúdo da pasta out/"
           ls -la out || true
@@ -112,8 +113,7 @@ jobs:
         with:
           name: flopoco-build-and-vhdl
           path: |
-            out/*.vhdl
-            out/*.vhd
+            out/**
             cmake.log
             make.log
             operators.list
