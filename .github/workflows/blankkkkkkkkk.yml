@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (naguentomais)
+name: Generate FloPoCo VHDL (agoravai
 
 on:
   workflow_dispatch:
@@ -114,6 +114,8 @@ jobs:
           name: flopoco-build-and-vhdl
           path: |
             out/**
+            flopoco/build/flopoco.vhdl
+            flopoco/build/*.vhdl
             cmake.log
             make.log
             operators.list
