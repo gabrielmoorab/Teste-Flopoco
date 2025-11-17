@@ -1,0 +1,35 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+Trying to build FloPoCo on Linux, compiler is /usr/bin/cc
+CMAKE_CURRENT_BINARY_DIR is /home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/build, CMAKE_CURRENT_SOURCE_DIR is /home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- Performing Test COMPILER_SUPPORTS_CXX0X
+-- Performing Test COMPILER_SUPPORTS_CXX0X - Success
+-- Found gmp and gmpxx: /usr/include/x86_64-linux-gnu,/usr/lib/x86_64-linux-gnu/libgmp.so,/usr/include,/usr/lib/x86_64-linux-gnu/libgmpxx.so
+-- Found mpfr: /usr/include,/usr/lib/x86_64-linux-gnu/libmpfr.so
+-- Found mpfi: /usr/include,/usr/lib/x86_64-linux-gnu/libmpfi.so
+-- Could not find (found: PYTHON_H-NOTFOUND,PYTHON_LIB-NOTFOUND), no flopoco_soaktest will be available
+-- Found boost random : /usr/include,/usr/lib/x86_64-linux-gnu/libboost_random.so
+-- Found Sollya: /usr/lib/x86_64-linux-gnu/libsollya.so,/usr/include
+-- Found sed: /usr/bin
+-- Could not find WCPG (found: WCPG_H-NOTFOUND,WCPG_LIB-NOTFOUND), this will affect the FixIIR operator
+-- SCALP not found (used for advanced bit heap compression and large multipliers) download and compile it from https://digidev.digi.e-technik.uni-kassel.de/scalp/
+-- No ILP solver available, SCALP needs one of the following: SCALP_CPLEX_LIB-NOTFOUND,SCALP_GUROBI_LIB-NOTFOUND,SCALP_SCIP_LIB-NOTFOUND,SCALP_LPSOLVE_LIB-NOTFOUND)
+-- Could not find PAGSuite's rpag (RPAG_LIB=RPAG_LIB-NOTFOUND, PAGSUITE_INCLUDE_DIR=PAGSUITE_INCLUDE_DIR-NOTFOUND)
+-- Could not find PAGSuite's paglib (PAG_LIB=PAG_LIB-NOTFOUND, PAGSUITE_INCLUDE_DIR=PAGSUITE_INCLUDE_DIR-NOTFOUND)
+-- Could not find PAGSuite's oscmlib (OSCM_LIB=OSCM_LIB-NOTFOUND, PAGSUITE_INCLUDE_DIR=PAGSUITE_INCLUDE_DIR-NOTFOUND)
+-- Found FLEX: /usr/bin/flex (found version "2.6.4")
+-- Configuring done (1.6s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/build

@@ -1,0 +1,26 @@
+> IntMultiplier IntMultiplier_F400_uid5: IntMultiplier(): Constructing a multiplier of size 24x24 faithfully rounded to bit 48. Will use 0 guard bits and DSP threshhold of 0
+> IntMultiplier IntMultiplier_F400_uid5: Creating BaseMultiplierCollection
+Target::getMaxDSPWidths for unsigned mult returns x=24 and y=17
+get rid of this annoying message in Target.cpp once it is clear it works
+Target::getMaxDSPWidths for signed mult returns x=25 and y=18
+get rid of this annoying message in Target.cpp once it is clear it works
+> IntMultiplier IntMultiplier_F400_uid5: Creating TilingStrategy using tiling method heuristicBasicTiling
+Total cost: 46.8
+multiplier of type BaseMultiplierDSP placed at (0,0) of size (17, 24) and signedness (0, 0) rel. bh weight=1
+multiplier of type BaseMultiplierDSP placed at (17,0) of size (7, 24) and signedness (0, 0) rel. bh weight=1
+
+*** Final report ***
+Output file: flopoco.vhdl
+Target: Kintex7 @ 400 MHz
+|   |---Entity DSPBlock_17x24_F400_uid9
+|   |      Not pipelined
+|   |---Entity DSPBlock_7x24_F400_uid11
+|   |      Not pipelined
+|   |---Entity IntAdder_32_F400_uid14
+|   |      Not pipelined
+|---Entity IntMultiplier_F400_uid5
+|      Not pipelined
+|---Entity IntAdder_33_F400_uid17
+|      Pipeline depth = 1
+Entity FPMult_8_23_8_23_8_23_uid2_F400_uid3
+   Pipeline depth = 1

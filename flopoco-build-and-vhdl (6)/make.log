@@ -1,0 +1,222 @@
+[  1%] [FLEX][VHDLLexer] Building scanner with flex 2.6.4
+[  1%] Generating Factories.cpp
+[  1%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Operator.o
+[  2%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/UserInterface.o
+[  2%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Signal.o
+[  3%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Target.o
+[  3%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/utils.o
+[  4%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FlopocoStream.o
+[  4%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Instance.o
+[  5%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Tools/ResourceEstimationHelper.o
+[  5%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Tools/FloorplanningHelper.o
+[  6%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/DSP.o
+[  6%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/Virtex6.o
+[  7%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/Zynq7000.o
+[  7%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/Kintex7.o
+[  8%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/VirtexUltrascalePlus.o
+[  8%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Targets/StratixV.o
+[  9%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/AutoTest/AutoTest.o
+[  9%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/TestCase.o
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp: In constructor ‘flopoco::AutoTest::AutoTest(std::string, bool)’:
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp:40:23: warning: ignoring return value of ‘int system(const char*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   40 |                 system("src/AutoTest/initTests.sh");
+      |                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp:149:31: warning: ignoring return value of ‘int system(const char*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  149 |                         system(("src/AutoTest/initOpTest.sh " + op).c_str());
+      |                         ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp:193:55: warning: ignoring return value of ‘int system(const char*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  193 |                                                 system((commandLine + commandLineTestBench).c_str());
+      |                                                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp:257:55: warning: ignoring return value of ‘int system(const char*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  257 |                                                 system((commandLine + commandLineTestBench).c_str());
+      |                                                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/runner/work/Teste-Flopoco/Teste-Flopoco/flopoco/src/AutoTest/AutoTest.cpp:269:39: warning: ignoring return value of ‘int system(const char*)’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  269 |                                 system(("src/AutoTest/cleanOpTest.sh " + op).c_str());
+      |                                 ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 10%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/FPNumber.o
+[ 10%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/IEEENumber.o
+[ 11%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/PositNumber.o
+[ 11%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/Wrapper.o
+[ 12%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TestBenches/TestBench.o
+[ 12%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/Bit.o
+[ 13%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/Compressor.o
+[ 13%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/BitHeap.o
+[ 14%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/CompressionStrategy.o
+[ 14%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/BitHeapPlotter.o
+[ 15%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/BitHeapSolution.o
+[ 15%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/BitHeapTest.o
+[ 16%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/FirstFittingCompressionStrategy.o
+[ 16%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/ParandehAfsharCompressionStrategy.o
+[ 17%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/MaxEfficiencyCompressionStrategy.o
+[ 17%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/BitHeap/OptimalCompressionStrategy.o
+[ 18%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/TutorialOperator.o
+[ 18%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ShiftersEtc/LZOC.o
+[ 19%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ShiftersEtc/LZOC3.o
+[ 19%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ShiftersEtc/Normalizer.o
+[ 20%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ShiftersEtc/Shifters.o
+[ 20%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ShiftReg.o
+[ 21%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixSOPC.o
+[ 21%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixFIR.o
+[ 22%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixHalfSine.o
+[ 22%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixRootRaisedCosine.o
+[ 23%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixIIR.o
+[ 23%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFilters/FixIIRShiftAdd.o
+[ 24%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntAddSubCmp/IntAdder.o
+[ 24%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntAddSubCmp/IntDualAddSub.o
+[ 25%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntAddSubCmp/IntMultiAdder.o
+[ 25%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/ShiftAddOp.o
+[ 26%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/ShiftAddDag.o
+[ 26%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/FixRealKCM.o
+[ 27%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/FixRealShiftAdd.o
+[ 27%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/FixRealConstMult.o
+[ 28%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/FixFixConstMult.o
+[ 28%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMult.o
+[ 29%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/FPConstMult.o
+[ 29%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstDiv.o
+[ 30%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMultShiftAdd.o
+[ 30%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMultShiftAddTypes.o
+[ 31%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMultShiftAddOpt.o
+[ 31%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMultShiftAddRPAG.o
+[ 32%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/IntConstMultShiftAddOptTernary.o
+[ 32%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/tscm_solutions.o
+[ 33%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/adder_cost.o
+[ 33%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/error_comp_graph.o
+[ 34%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ConstMult/WordLengthCalculator.o
+[ 34%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/IntMultiplier.o
+[ 35%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/FixMultAdd.o
+[ 35%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategy.o
+[ 36%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategyOptimalILP.o
+[ 36%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategyBasicTiling.o
+[ 37%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategyGreedy.o
+[ 37%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategyXGreedy.o
+[ 38%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingStrategyBeamSearch.o
+[ 38%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/Field.o
+[ 39%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/NearestPointCursor.o
+[ 39%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/MultiplierBlock.o
+[ 40%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/DSPBlock.o
+[ 40%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplier.o
+[ 41%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierCategory.o
+[ 41%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierCollection.o
+[ 42%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierDSP.o
+[ 42%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierDSPKaratsuba.o
+[ 43%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierDSPSuperTilesXilinx.o
+[ 43%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierLUT.o
+[ 44%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/IntKaratsubaRectangular.o
+[ 44%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/IntMultiplierLUT.o
+[ 45%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TargetBaseMultSpecialisation.o
+[ 45%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierXilinx2xk.o
+[ 46%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseMultiplierIrregularLUTXilinx.o
+[ 46%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/MultiplierTileCollection.o
+[ 47%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/TilingAndCompressionOptILP.o
+[ 47%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/IntSquarer.o
+[ 48%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IntMult/BaseSquarerLUT.o
+[ 48%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Complex/FixComplexKCM.o
+[ 49%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Complex/FixComplexAdder.o
+[ 49%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Complex/FixComplexR2Butterfly.o
+[ 50%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Complex/FixFFTFullyPA.o
+[ 50%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/Posit2FP.o
+[ 51%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/FP2Fix.o
+[ 51%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/Fix2FP.o
+[ 52%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/OutputIEEE.o
+[ 52%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/InputIEEE.o
+[ 53%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Comparators/IntComparator.o
+[ 53%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Comparators/IntConstantComparator.o
+[ 54%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Comparators/FPComparator.o
+[ 54%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPAddSub/FPAdd.o
+[ 55%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPAddSub/FPAddDualPath.o
+[ 55%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPAddSub/FPAddSinglePath.o
+[ 56%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPMultSquare/FPMult.o
+[ 56%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPDivSqrt/FPDiv.o
+[ 57%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FPDivSqrt/FPSqrt.o
+[ 57%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ExpLog/FPExp.o
+[ 58%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ExpLog/FPLog.o
+[ 58%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ExpLog/FPLogIterative.o
+[ 59%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/ExpLog/FPPow.o
+[ 59%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IEEE/IEEEFMA.o
+[ 60%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IEEE/IEEEAdd.o
+[ 60%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/IEEE/IEEEFloatFormat.o
+[ 61%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Table.o
+[ 61%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/DualTable.o
+[ 62%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixConstant.o
+[ 62%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixFunction.o
+[ 63%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixFunctionByTable.o
+[ 63%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/BasicPolyApprox.o
+[ 64%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixPolyEval.o
+[ 64%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixHornerEvaluator.o
+[ 65%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/UniformPiecewisePolyApprox.o
+[ 65%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixFunctionBySimplePoly.o
+[ 66%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixFunctionByPiecewisePoly.o
+[ 66%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/Multipartite.o
+[ 67%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/FixFunctions/FixFunctionByMultipartiteTable.o
+[ 67%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/ConstDiv3ForSinPoly.o
+[ 68%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixSinPoly.o
+[ 68%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixSinCos.o
+[ 69%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixSinCosPoly.o
+[ 69%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixSinCosCORDIC.o
+[ 70%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixAtan2.o
+[ 70%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixAtan2ByCORDIC.o
+[ 71%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/Fix2DNorm.o
+[ 71%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Trigs/FixAtan2ByRecipMultAtan.o
+[ 72%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/BooleanEquation.o
+[ 72%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/GenericLut.o
+[ 73%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Primitive.o
+[ 73%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/GenericAddSub.o
+[ 74%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/GenericMux.o
+[ 74%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_Primitive.o
+[ 75%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_LUT_compute.o
+[ 75%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_CARRY4.o
+[ 76%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_LUT5.o
+[ 76%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_LUT6.o
+[ 77%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_MUXF7.o
+[ 77%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_MUXF8.o
+[ 78%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_FDCE.o
+[ 78%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_n2m_Decoder.o
+[ 79%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_Comparator.o
+[ 79%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_GenericAddSub.o
+[ 80%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_GenericAddSub_slice.o
+[ 80%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_GenericMux.o
+[ 81%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_GenericMux_slice.o
+[ 81%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_TernaryAdd_2State.o
+[ 82%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/Xilinx_TernaryAdd_2State_slice.o
+[ 82%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/XilinxGPC.o
+[ 83%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Xilinx/XilinxFourToTwoCompressor.o
+[ 83%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/PrimitiveComponents/Intel/Intel_LCELL.o
+[ 84%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Tools/Plane.o
+[ 84%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Tools/Point.o
+[ 85%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Complex/FixFFT.o
+[ 85%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/PIF2Posit.o
+[ 86%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Conversions/Posit2PIF.o
+[ 86%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Add/PIFAdd.o
+[ 87%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Add/PositAdd.o
+[ 87%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Exp/PIF2Fix.o
+[ 88%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Exp/PositExp.o
+[ 88%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Fun/PositFunction.o
+[ 89%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Fun/PositFunctionByTable.o
+[ 89%] Building CXX object CMakeFiles/FloPoCoLib.dir/src/Posit/Posit2Posit.o
+[ 90%] Building CXX object CMakeFiles/FloPoCoLib.dir/Factories.o
+[ 90%] Building CXX object CMakeFiles/FloPoCoLib.dir/VHDLLexer.o
+[ 91%] Linking CXX static library libFloPoCo.a
+[ 91%] Built target FloPoCoLib
+[ 91%] Building CXX object CMakeFiles/flopoco.dir/src/main.o
+[ 91%] Building CXX object CMakeFiles/fp2bin.dir/src/Tools/fp2bin.o
+[ 92%] Building CXX object CMakeFiles/fp2bin.dir/src/utils.o
+[ 93%] Linking CXX executable flopoco
+[ 93%] Built target flopoco
+[ 93%] Building CXX object CMakeFiles/bin2fp.dir/src/Tools/bin2fp.o
+[ 94%] Building CXX object CMakeFiles/bin2fp.dir/src/utils.o
+[ 94%] Linking CXX executable fp2bin
+[ 94%] Built target fp2bin
+[ 95%] Building CXX object CMakeFiles/ieee2bin.dir/src/Tools/ieee2bin.o
+[ 95%] Building CXX object CMakeFiles/ieee2bin.dir/src/utils.o
+[ 95%] Linking CXX executable bin2fp
+[ 95%] Built target bin2fp
+[ 96%] Building CXX object CMakeFiles/bin2ieee.dir/src/Tools/bin2ieee.o
+[ 96%] Building CXX object CMakeFiles/bin2ieee.dir/src/utils.o
+[ 97%] Linking CXX executable ieee2bin
+[ 97%] Built target ieee2bin
+[ 97%] Building CXX object CMakeFiles/longacc2fp.dir/src/Tools/longacc2fp.o
+[ 98%] Building CXX object CMakeFiles/longacc2fp.dir/src/utils.o
+[ 99%] Linking CXX executable bin2ieee
+[ 99%] Built target bin2ieee
+[100%] Linking CXX executable longacc2fp
+[100%] Built target longacc2fp

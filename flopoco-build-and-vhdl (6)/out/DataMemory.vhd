@@ -17,10 +17,10 @@ end DataMemory;
 architecture Behavioral of DataMemory is
 	type Memory is array (0 to 31) of STD_LOGIC_VECTOR(31 downto 0);
 	signal DMem : Memory := (
-		X"3FC00000", -- 1.5f
-		X"40000000", -- 2.0f
-		X"00000000",
-		X"00000000",
+		X"00000055",
+		X"000000AA",
+		X"00000011",
+		X"00000033",
 		X"00000000",
 		X"00000000",
 		X"00000000",

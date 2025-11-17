@@ -1,0 +1,14 @@
+
+*** Final report ***
+Output file: flopoco.vhdl
+Target: Kintex7 @ 400 MHz
+|---Entity RightShifterSticky24_by_max_26_F400_uid4
+|      Pipeline depth = 2
+|---Entity IntAdder_27_F400_uid6
+|      Pipeline depth = 1
+|---Entity Normalizer_Z_28_28_28_F400_uid8
+|      Pipeline depth = 2
+|---Entity IntAdder_34_F400_uid11
+|      Not pipelined
+Entity FPAdd_8_23_F400_uid2
+   Pipeline depth = 8
