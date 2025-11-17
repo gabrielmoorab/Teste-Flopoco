@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (agoravai
+name: Generate FloPoCo VHDL (fp32-stablekkk)
 
 on:
   workflow_dispatch:
@@ -100,12 +100,10 @@ jobs:
           ls -la || true
 
           cd ../../
-          # Also copy any remaining .vhdl/.vhd as a fallback
-          find flopoco/build -maxdepth 1 -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp -n {} "$OUTDIR"/ \; || true
+          # Also copy any remaining .vhdl/.vhd as a fallback (search repo-wide)
+          echo "Buscando arquivos .vhdl/.vhd no workspace..."
+          find . -type f \( -iname '*.vhdl' -o -iname '*.vhd' \) -print -exec cp -n {} "$OUTDIR"/ \; || true
           echo "Conteúdo de $OUTDIR:" && ls -la "$OUTDIR" || true
-
-          echo "Conteúdo da pasta out/"
-          ls -la out || true
 
       - name: Upload artifacts (VHDL + logs) - always
         if: always()
