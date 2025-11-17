@@ -1,4 +1,4 @@
-name: Generate FloPoCo VHDL (fp32-stablekkk)
+name: Generate FloPoCo VHDL (fp32)
 
 on:
   workflow_dispatch:
@@ -124,3 +124,10 @@ jobs:
             FPMult.log
             FPAdder.log
             FPMultiplier.log
+
+      - name: Upload full build dir (debug) - always
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flopoco-build-dir
+          path: flopoco/build/**
